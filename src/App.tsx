@@ -5,14 +5,14 @@ import Todo from "./types/modalTodo";
 import TodoList from "./components/TodoList";
 
 function App() {
-	const [task, setTask] = useState<string>("");
+	const [todo, setTodo] = useState<string>("");
 	const [todos, setTodos] = useState<Todo[]>([]);
 
 	const handleTodos = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (task) {
-			setTodos([...todos, { id: Date.now(), isDone: false, task }]);
-      setTask("")
+		if (todo) {
+			setTodos([...todos, { id: Date.now(), isDone: false, todo }]);
+      setTodo("")
 		}
     };
 
@@ -20,7 +20,7 @@ function App() {
 	return (
 		<div className="App">
 			<span className="heading">Taskify App</span>
-			<InputField task={task} setTask={setTask} handleTodos={handleTodos} />
+			<InputField todo={todo} setTodo={setTodo} handleTodos={handleTodos} />
       <TodoList todos={todos} setTodos={setTodos}/>
 		</div>
 	);

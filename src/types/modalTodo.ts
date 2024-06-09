@@ -1,5 +1,5 @@
 export default interface Todo {
 	id: number;
-	isDone: false;
-	task: string;
+	isDone: boolean;
+	todo: string;
 }
