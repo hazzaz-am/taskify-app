@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 import Todo from "../types/modalTodo";
 import "./styles.css";
 
 interface SingleTodoProps {
+	index: number;
 	todo: Todo;
 	todos: Todo[];
 	setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
+const SingleTodo = ({ todo, todos, setTodos, index }: SingleTodoProps) => {
 	const [edit, setEdit] = useState(false);
 	const [editedValue, setEditedValue] = useState(todo.todo);
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const handleDonetodo = (id: number) => {
 		setTodos(
@@ -39,6 +41,10 @@ const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
 		setEdit(false);
 	};
 
+	useEffect(() => {
+		inputRef.current?.focus();
+	}, [edit]);
+
 	return (
 		<form
 			className="todos__single"
@@ -56,6 +62,7 @@ const SingleTodo = ({ todo, todos, setTodos }: SingleTodoProps) => {
 					type="text"
 					value={editedValue}
 					onChange={(e) => setEditedValue(e.target.value)}
+					ref={inputRef}
 				/>
 			)}
 			<div>

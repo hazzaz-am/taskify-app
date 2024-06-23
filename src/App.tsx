@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
-import Todo from "./types/modalTodo";
 import TodoList from "./components/TodoList";
+import Todo from "./types/modalTodo";
 
 function App() {
 	const [todo, setTodo] = useState<string>("");
@@ -12,16 +12,15 @@ function App() {
 		e.preventDefault();
 		if (todo) {
 			setTodos([...todos, { id: Date.now(), isDone: false, todo }]);
-      setTodo("")
+			setTodo("");
 		}
-    };
-
+	};
 
 	return (
 		<div className="App">
 			<span className="heading">Taskify App</span>
 			<InputField todo={todo} setTodo={setTodo} handleTodos={handleTodos} />
-      <TodoList todos={todos} setTodos={setTodos}/>
+			<TodoList todos={todos} setTodos={setTodos} />
 		</div>
 	);
 }
