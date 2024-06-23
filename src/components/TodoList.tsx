@@ -11,7 +11,6 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
 	return (
 		<div className="container">
 			<div className="todos">
-				<span className="todos__heading">Active Tasks</span>
 				{todos.map((todo, index) => (
 					<SingleTodo
 						index={index}
